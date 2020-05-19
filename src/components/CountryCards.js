@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AllCountries from "./AllCountries";
+import { Flex } from "@chakra-ui/core";
 export default class CountryCards extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,17 @@ export default class CountryCards extends Component {
     const country = this.state.countries.map((country) => {
       return <AllCountries key={country.alpha2Code} country={country} />;
     });
-    return <div className="d-flex justify-content-center ">{country}</div>;
+    return (
+      <Flex
+        align="center"
+        justify="space-between"
+        wrap="wrap"
+        padding="5rem"
+        bg="white"
+        color="black"
+      >
+        {country}
+      </Flex>
+    );
   }
 }
