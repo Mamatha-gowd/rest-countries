@@ -10,5 +10,113 @@ body {
   --Light-mode-background: hsl(0, 0%, 98%);
   --Light-dark-mode-elements: hsl(0, 0%, 100%);
   --Dark-mode-elements: hsl(209, 23%, 22%);
-  --Dark-mode-ackground: hsl(207, 26%, 17%);
+  --Dark-mode-background: hsl(207, 26%, 17%);
+}
+
+.light {
+  background: var(--Light-mode-background);
+}
+.light a {
+  color: var(--Light-mode-text);
+}
+.dark {
+  background: var(--Dark-mode-background);
+  color: var(--Light-dark-mode-elements);
+}
+
+.dark a {
+  color: var(--Light-dark-mode-elements);
+}
+
+.dark option {
+  color: var(--Light-dark-mode-elements);
+  background: var(--Dark-mode-background);
+}
+.dark Select {
+  background: var(--Dark-mode-background);
+  color: var(--Light-dark-mode-elements);
+}
+.dark Input {
+  background: var(--Dark-mode-background);
+  color: var(--Light-dark-mode-elements);
+}
+.dark ::placeholder {
+  color: var(--Light-dark-mode-elements);
+}
+
+.search-container {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.search-container-grid {
+  display: grid;
+  grid-template-columns: 90%;
+  gap: 20px;
+  margin-left: 3%;
+}
+.country-information-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: space-between;
+  gap: 50px;
+  margin-left: 25px;
+  margin-right: 20px;
+}
+
+.information-grid {
+  display: grid;
+  grid-template-columns: 100%;
+  margin-top: 20px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.all-countries {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: center;
+  gap: 10px;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+@media screen and (min-width: 600px) {
+  .all-countries {
+    grid-template-columns: 50% 50%;
+  }
+  .header {
+    grid-template-columns: 65% 35%;
+  }
+  .information-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .search-container-grid {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 75% 23%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .all-countries {
+    grid-template-columns: 33% 33% 33%;
+  }
+  .header {
+    grid-template-columns: 80% 20%;
+  }
+  .search-container-grid {
+    display: grid;
+    margin-left: 5%;
+    grid-template-columns: 70% 23%;
+  }
+
+  .country-information-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
 }

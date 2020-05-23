@@ -1,27 +1,19 @@
 import React from "react";
-import { Icon, Heading, Flex, Button } from "@chakra-ui/core";
+import { Box, Icon, Heading, Button } from "@chakra-ui/core";
 
 const NavBar = (props) => {
+  const mode = props.theme ? "Light Mode" : "Dark Mode";
   return (
-    <Flex
-      as="nav"
-      align="center"
-      justify="space-between"
-      wrap="wrap"
-      padding="1.5rem"
-      bg="white"
-      color="black"
-      {...props}
-    >
-      <Flex align="center" mr={5}>
-        <Heading as="h1" size="lg">
-          Where in the world
-        </Heading>
-      </Flex>
-      {/* <Icon name="moon" p={3}></Icon> */}
-      <Icon name="moon" boolean="false" ml="70%"></Icon>
-      <Button onClick={props.handleTheme}>Dark mode</Button>
-    </Flex>
+    <Box className="header" as="nav" boxShadow="sm">
+      <Heading size="lg" p={10}>
+        Where in the world?
+      </Heading>
+      <Box mt={8}>
+        {/* <Icon name="moon" p={3}></Icon> */}
+        <Icon name="moon"></Icon>
+        <Button onClick={props.handleTheme}>{mode}</Button>
+      </Box>
+    </Box>
   );
 };
 
