@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Box, Button, Image, Heading } from "@chakra-ui/core";
+import { Box, Button, Image, Heading, Grid, Flex } from "@chakra-ui/core";
 import { getCountry } from "./API";
-
 export default class CountryData extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +19,7 @@ export default class CountryData extends Component {
 
   render() {
     const country = this.state.country;
+
     console.log(this.state.countryId);
     return (
       <Box style={{ marginTop: "25px" }}>
@@ -48,7 +48,10 @@ export default class CountryData extends Component {
                 </p>
                 <p>
                   <span style={{ fontWeight: "bold" }}>Population: </span>{" "}
-                  {country.population}
+                  {country.population &&
+                    country.population
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </p>
                 <p>
                   <span style={{ fontWeight: "bold" }}>Region: </span>{" "}
@@ -63,14 +66,19 @@ export default class CountryData extends Component {
                   <span style={{ fontWeight: "bold" }}>Capital: </span>{" "}
                   {country.capital}
                 </p>
-                <p>
-                  <span style={{ fontWeight: "bold" }}>Border Countries:</span>{" "}
+                <Box mt="30px">
+                  <p>
+                    <span style={{ fontWeight: "bold" }}>
+                      Border Countries:
+                    </span>{" "}
+                  </p>
                   {country.borders && country.borders.length !== 0 ? (
                     country.borders.map((border) => (
                       <Box
-                        mt={2}
+                        display="inline"
+                        ml="15px"
                         key={border}
-                        boxShadow="sm"
+                        boxShadow="md"
                         style={{ width: "50px" }}
                       >
                         <Link to={`/countries/${border}`}>{border}</Link>
@@ -79,33 +87,30 @@ export default class CountryData extends Component {
                   ) : (
                     <h5>None</h5>
                   )}
-                </p>
+                </Box>
               </Box>
-              <Box>
+              <Box mt="20px">
                 <p>
                   <span style={{ fontWeight: "bold" }}>Top Level Domain:</span>
                   {country.topLevelDomain}
                 </p>
                 <p>
                   <span>Currencies:</span>
-                  {country.currency && country.currencies.length !== 0 ? (
-                    country.currencies
-                      .map((currency) => currency.name)
-                      .join(", ")
-                  ) : (
-                    <h3>None</h3>
-                  )}
                 </p>
+                {country.currency && country.currencies.length !== 0 ? (
+                  country.currencies.map((currency) => currency.name).join(", ")
+                ) : (
+                  <h3>None</h3>
+                )}
+
                 <p>
                   <span>Languages:</span>{" "}
-                  {country.languages && country.languages.length !== 0 ? (
-                    country.languages
-                      .map((language) => language.name)
-                      .join(", ")
-                  ) : (
-                    <h3>None</h3>
-                  )}
                 </p>
+                {country.languages && country.languages.length !== 0 ? (
+                  country.languages.map((language) => language.name).join(", ")
+                ) : (
+                  <h3>None</h3>
+                )}
               </Box>
             </Box>
           </Box>

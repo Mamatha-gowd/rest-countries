@@ -6,7 +6,7 @@ import CounrtyData from "./components/CountryData";
 import CountryCards from "./components/CountryCards";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import { theme, ThemeProvider, CSSReset } from "@chakra-ui/core";
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 
 const App = () => {
   const [theme, setTheme] = useState(false);
@@ -16,7 +16,7 @@ const App = () => {
   };
 
   return (
-    <Box className={`App ` + (theme ? "dark" : "light")}>
+    <Box className={theme ? "dark" : "light"}>
       <ThemeProvider>
         <CSSReset />
         <NavBar theme={theme} handleTheme={handleTheme} />
