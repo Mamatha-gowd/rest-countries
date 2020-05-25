@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 :root {
@@ -16,6 +17,7 @@ body {
 .light {
   background: var(--Light-mode-background);
 }
+
 .light a {
   color: var(--Light-mode-text);
 }
@@ -43,9 +45,12 @@ body {
 .dark ::placeholder {
   color: var(--Light-dark-mode-elements);
 }
-
+.dark button:hover {
+  background: var(--Dark-mode-background);
+  color: var(--Light-dark-mode-elements);
+}
 .search-container {
-  margin-top: 40px;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 .search-container-grid {
@@ -71,8 +76,8 @@ body {
 }
 
 .header {
-  display: grid;
-  grid-template-columns: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 .all-countries {
   display: grid;
@@ -88,7 +93,8 @@ body {
     grid-template-columns: 50% 50%;
   }
   .header {
-    grid-template-columns: 65% 35%;
+    display: flex;
+    justify-content: space-between;
   }
   .information-grid {
     display: grid;
@@ -106,8 +112,9 @@ body {
   .all-countries {
     grid-template-columns: 33% 33% 33%;
   }
+
   .header {
-    grid-template-columns: 80% 20%;
+    display: flex;
   }
   .search-container-grid {
     display: grid;

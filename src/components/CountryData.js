@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Box, Button, Image, Heading, Grid, Flex } from "@chakra-ui/core";
+import { Box, Button, Image, Heading, Tag, Stack } from "@chakra-ui/core";
 import { getCountry } from "./API";
 export default class CountryData extends Component {
   constructor(props) {
@@ -22,21 +22,24 @@ export default class CountryData extends Component {
 
     console.log(this.state.countryId);
     return (
-      <Box style={{ marginTop: "25px" }}>
+      <Box>
         <Link to="/">
           <Button
-            p={5}
+            size="md"
+            _focus="none"
+            variant="ghost"
+            _hover="none"
+            p={12}
             ml={6}
             mb="20px"
-            borderRadius="5px"
             leftIcon="arrow-back"
           >
             Back
           </Button>
         </Link>
         <Box className="country-information-grid">
-          <Box maxH="500px">
-            <Image src={country.flag} />
+          <Box>
+            <Image p={[null, null, 10]} src={country.flag} />
           </Box>
           <Box>
             <Heading>{country.name}</Heading>
@@ -66,30 +69,30 @@ export default class CountryData extends Component {
                   <span style={{ fontWeight: "bold" }}>Capital: </span>{" "}
                   {country.capital}
                 </p>
-                <Box mt="30px">
+                <Box mt="30px" mb="10px">
                   <p>
                     <span style={{ fontWeight: "bold" }}>
                       Border Countries:
                     </span>{" "}
                   </p>
-                  {country.borders && country.borders.length !== 0 ? (
-                    country.borders.map((border) => (
-                      <Box
-                        display="inline"
-                        ml="15px"
-                        key={border}
-                        boxShadow="md"
-                        style={{ width: "50px" }}
-                      >
-                        <Link to={`/countries/${border}`}>{border}</Link>
-                      </Box>
-                    ))
-                  ) : (
-                    <h5>None</h5>
-                  )}
+                  <Stack mt="10px" isInline spacing={6} flexWrap="wrap">
+                    {country.borders && country.borders.length !== 0 ? (
+                      country.borders.map((border) => (
+                        <Box mt="15px">
+                          <Link to={`/countries/${border}`}>
+                            <Tag key={border} variantColor="gray">
+                              {border}
+                            </Tag>
+                          </Link>
+                        </Box>
+                      ))
+                    ) : (
+                      <h5>None</h5>
+                    )}
+                  </Stack>
                 </Box>
               </Box>
-              <Box mt="20px">
+              <Box>
                 <p>
                   <span style={{ fontWeight: "bold" }}>Top Level Domain:</span>
                   {country.topLevelDomain}
