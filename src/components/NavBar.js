@@ -9,9 +9,11 @@ const NavBar = (props) => {
         Where in the world?
       </Heading>
       <Box
+        as="flex"
+        alignSelf="center"
         mr={[null, null, "100px"]}
-        mt={["-25px", null, "30px"]}
-        ml={["30px"]}
+        mt={["-25px", "2px", "2px"]}
+        ml={["30px", null, "50px"]}
       >
         {/* <Icon name="moon" p={3}></Icon> */}
         <Icon name="moon"></Icon>

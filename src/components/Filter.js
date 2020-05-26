@@ -1,19 +1,29 @@
 import React from "react";
-import { Box, Flex, Icon, Input, Select } from "@chakra-ui/core";
+import {
+  Box,
+  Flex,
+  Icon,
+  Input,
+  InputLeftElement,
+  InputGroup,
+  Select,
+} from "@chakra-ui/core";
 
 export default function Filter(props) {
   return (
     <Box className="search-container">
       <Box className="search-container-grid">
-        <Flex width="350px" borderRadius="10px" boxShadow="sm" p={2}>
-          <Icon name="search" size="32px" p={7} />
+        <InputGroup w="350px">
+          <InputLeftElement
+            children={<Icon name="search" size="32px" p={7} />}
+          />
           <Input
+            onChange={props.searchCountry}
             placeholder="search for a country..."
             size="sm"
-            onChange={props.searchCountry}
-            border="0"
-          ></Input>
-        </Flex>
+          />
+        </InputGroup>
+
         <Box>
           <Select
             isDisabled={false}

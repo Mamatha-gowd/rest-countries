@@ -103,8 +103,8 @@ body {
 
   .search-container-grid {
     display: grid;
-    gap: 5px;
-    grid-template-columns: 75% 23%;
+    gap: 1px;
+    grid-template-columns: 70% 30%;
   }
 }
 
@@ -119,7 +119,7 @@ body {
   .search-container-grid {
     display: grid;
     margin-left: 5%;
-    grid-template-columns: 70% 23%;
+    grid-template-columns: 70% 20%;
   }
 
   .country-information-grid {
