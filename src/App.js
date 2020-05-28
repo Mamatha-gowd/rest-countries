@@ -1,4 +1,6 @@
 import React from "react";
+import { Provider } from "react-redux";
+import store from "./store";
 import { BrowserRouter, Route } from "react-router-dom";
 import { useState } from "react";
 import { Box } from "@chakra-ui/core";
@@ -17,15 +19,17 @@ const App = () => {
   return (
     <Box className={theme ? "dark" : "light"}>
       <NavBar theme={theme} handleTheme={handleTheme} />
-      <BrowserRouter>
-        <Route exact path="/" component={CountryCards} />
-        <Route
-          path="/countries/:countryId"
-          render={(props) => (
-            <CounrtyData {...props} key={props.match.params.countryId} />
-          )}
-        />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Route exact path="/" component={CountryCards} />
+          <Route
+            path="/countries/:countryId"
+            render={(props) => (
+              <CounrtyData {...props} key={props.match.params.countryId} />
+            )}
+          />
+        </BrowserRouter>
+      </Provider>
     </Box>
   );
 };

@@ -1,25 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import { Box, Button, Image, Heading, Tag, Stack } from "@chakra-ui/core";
-import { getCountry } from "./API";
-export default class CountryData extends Component {
+import { searchCountries } from "../Actions/searchCountryAction";
+class CountryData extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      country: {},
       countryId: this.props.match.params.countryId,
     };
   }
 
   componentDidMount() {
-    getCountry(this.state.countryId).then((res) => {
-      this.setState({ country: res });
-    });
+    this.props.searchCountries(this.state.countryId);
   }
 
   render() {
-    const country = this.state.country;
-
+    const country = this.props.country;
     console.log(this.state.countryId);
     return (
       <Box>
@@ -122,3 +119,8 @@ export default class CountryData extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  country: state.searchCountryReducer.country,
+});
+export default connect(mapStateToProps, { searchCountries })(CountryData);
